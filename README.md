@@ -15,9 +15,9 @@
 </dependency>
 
 <dependency>
-    <groupId>io.springfox</groupId>
-    <artifactId>springfox-swagger2</artifactId>
-    <version>2.9.2</version>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger-ui</artifactId>
+	<version>2.9.2</version>
 </dependency>
 ```
 4. We need to paste these codes inside the dependentenices tag in pom.xml
