@@ -12,7 +12,7 @@ import lombok.Data;
 @Table(name = "job_positions") // veritabanında hangi tabloya karşılık geliyor.
 @Data
 public class JobPositions {
-	@Id // id alanını belirttik.
+	@Id // id alanını belirttik
 	@GeneratedValue // auto increment(bir bir artırılacak) diye belirttik.
 	@Column(name = "job_id") // hangi sütuna karşılık geliyor.
 	private int id;
