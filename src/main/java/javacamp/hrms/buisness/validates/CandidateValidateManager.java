@@ -45,7 +45,7 @@ public class CandidateValidateManager implements ValidateService<Candidate>{
 			return new ErrorResult("Mail adresi zaten mevcut");
 		}
 		if(candidateDao.existByIdentityNumber(candidate.getIdentityNumber())) {
-			return new ErrorResult("Bu kimlik numarası sistemimizde zaten mevcut")
+			return new ErrorResult("Bu kimlik numarası sistemimizde zaten mevcut");
 		}
 		if(!candidate.getPassword().equals(candidate.getRepeatPassword())) {
 			return new ErrorResult("Şifreler uyuşmuyor");
