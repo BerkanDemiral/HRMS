@@ -1,5 +1,5 @@
 package javacamp.hrms.buisness.concretes;
 
-public class EmployersManager {
+public class VerifyCodeManager {
 
 }

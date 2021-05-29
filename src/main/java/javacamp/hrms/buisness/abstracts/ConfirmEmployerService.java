@@ -1,5 +1,5 @@
 package javacamp.hrms.buisness.abstracts;
 
-public interface EmployersService {
+public interface ConfirmEmployerService {
 
 }

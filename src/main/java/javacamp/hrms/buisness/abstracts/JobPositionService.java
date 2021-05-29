@@ -4,6 +4,6 @@ import java.util.List;
 
 import javacamp.hrms.entities.concretes.JobPosition;
 
-public interface JobPositionsService {
+public interface JobPositionService {
 	List<JobPosition> getAll();
 }
