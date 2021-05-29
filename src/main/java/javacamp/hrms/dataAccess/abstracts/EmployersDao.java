@@ -2,8 +2,8 @@ package javacamp.hrms.dataAccess.abstracts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javacamp.hrms.entities.concretes.Employers;
+import javacamp.hrms.entities.concretes.Employer;
 
-public interface EmployersDao extends JpaRepository<Employers, Integer> {
+public interface EmployersDao extends JpaRepository<Employer, Integer> {
 
 }

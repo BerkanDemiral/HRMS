@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.JobPositionsService;
 import javacamp.hrms.dataAccess.abstracts.JobPositionsDao;
-import javacamp.hrms.entities.concretes.JobPositions;
+import javacamp.hrms.entities.concretes.JobPosition;
 
 @Service
 public class JobPositionsManage implements JobPositionsService {
@@ -18,7 +18,7 @@ public class JobPositionsManage implements JobPositionsService {
 	}
 
 	@Override
-	public List<JobPositions> getAll() {
+	public List<JobPosition> getAll() {
 		return this.jobPositionsDao.findAll(); // her şeyi getir --> findall;
 	}
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javacamp.hrms.buisness.abstracts.JobPositionsService;
-import javacamp.hrms.entities.concretes.JobPositions;
+import javacamp.hrms.entities.concretes.JobPosition;
 
 @RestController
 @RequestMapping("/api/job_positions") // kodlama.io/api/products diye bir istekte bulunursak bu çalışacak.
@@ -23,7 +23,7 @@ public class JobPositionsController {
 	}
 
 	@GetMapping("/getall")
-	public List<JobPositions> getAll() {
+	public List<JobPosition> getAll() {
 		return this.jobPositionsService.getAll();
 	}
 

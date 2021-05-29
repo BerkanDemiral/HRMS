@@ -2,8 +2,8 @@ package javacamp.hrms.buisness.abstracts;
 
 import java.util.List;
 
-import javacamp.hrms.entities.concretes.JobPositions;
+import javacamp.hrms.entities.concretes.JobPosition;
 
 public interface JobPositionsService {
-	List<JobPositions> getAll();
+	List<JobPosition> getAll();
 }
