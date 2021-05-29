@@ -1,5 +1,10 @@
 package javacamp.hrms.dataAccess.abstracts;
 
-public interface SystemPersonnelDao {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import javacamp.hrms.entities.concretes.SystemPersonnel;
+
+public interface SystemPersonnelDao extends JpaRepository<SystemPersonnel, Integer> {
+	SystemPersonnel getBySystemPersonnelName(String systemPersonnelName);
+	boolean existBySystemPersonnelName(String systemPersonnelName);
 }
