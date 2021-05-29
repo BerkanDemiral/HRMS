@@ -36,7 +36,7 @@ public class VerifyCode {
 	
 	@ManyToOne(targetEntity = User.class,fetch = FetchType.LAZY, optional = false) 
 	// Birden fazla kullanıcıya aynı onay kodu gidebilir, 
-	@JoinColumn(name="user_id", referencedColumnName = "id", nullable=false)
+	@JoinColumn(name="user_id", referencedColumnName = "id", nullable=false) // bu tablodaki user_id kısmı, User.class'daki id sütununu refere eder
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private User userId;
