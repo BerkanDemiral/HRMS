@@ -5,15 +5,15 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.JobPositionsService;
-import javacamp.hrms.dataAccess.abstracts.JobPositionsDao;
+import javacamp.hrms.dataAccess.abstracts.JobPositionDao;
 import javacamp.hrms.entities.concretes.JobPosition;
 
 @Service
 public class JobPositionsManage implements JobPositionsService {
 
-	private JobPositionsDao jobPositionsDao;
+	private JobPositionDao jobPositionsDao;
 
-	public JobPositionsManage(JobPositionsDao jobPositionsDao) {
+	public JobPositionsManage(JobPositionDao jobPositionsDao) {
 		this.jobPositionsDao =  jobPositionsDao;
 	}
 
