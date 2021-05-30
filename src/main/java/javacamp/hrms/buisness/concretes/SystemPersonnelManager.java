@@ -1,5 +1,9 @@
 package javacamp.hrms.buisness.concretes;
 
-public class SystemPersonnelManager {
+import org.springframework.stereotype.Service;
+
+import javacamp.hrms.buisness.abstracts.SystemPersonnelService;
+@Service
+public class SystemPersonnelManager implements SystemPersonnelService{
 
 }

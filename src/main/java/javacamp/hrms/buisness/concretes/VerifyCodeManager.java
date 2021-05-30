@@ -2,7 +2,7 @@ package javacamp.hrms.buisness.concretes;
 
 import org.springframework.stereotype.Service;
 
-import com.sun.net.httpserver.Authenticator.Result;
+import javacamp.hrms.core.utilities.results.Result;
 
 import javacamp.hrms.buisness.abstracts.VerifyCodeService;
 import javacamp.hrms.dataAccess.abstracts.UserDao;
