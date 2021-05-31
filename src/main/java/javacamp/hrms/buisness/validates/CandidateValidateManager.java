@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sun.net.httpserver.Authenticator.Result;
-
+import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.adapter.service.VerifyApiService;
 import javacamp.hrms.buisness.abstracts.ValidateService;
 import javacamp.hrms.buisness.abstracts.VerifyCodeService;
