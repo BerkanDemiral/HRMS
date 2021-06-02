@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor // parametreli constructorlar eklendi
 @NoArgsConstructor // parametresiz constructorlar eklendi
-@Table(name="employers")
+@Table(name="system_personnels")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class SystemPersonnel extends User {
 	

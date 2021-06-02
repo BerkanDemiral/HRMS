@@ -3,6 +3,7 @@ package javacamp.hrms.buisness.validates;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.ConfirmEmployerService;
 import javacamp.hrms.buisness.abstracts.ValidateService;
@@ -15,16 +16,17 @@ import javacamp.hrms.core.utilities.results.SuccessResult;
 import javacamp.hrms.dataAccess.abstracts.EmployerDao;
 import javacamp.hrms.dataAccess.abstracts.UserDao;
 import javacamp.hrms.entities.concretes.Employer;
-
+@Service
 public class EmployerValidateManager implements ValidateService<Employer>{
 
+	@Autowired
 	private EmployerDao employerDao;
 	private UserDao userDao;
 	private VerifyCodeService verifyCodeService;
 	private ConfirmEmployerService confirmEmployerService; // bizim şirketi onaylamamamız gerektiği için bunu da enject edip kullanıyoruz.
 	
 	
-	@Autowired
+	
 	public EmployerValidateManager(EmployerDao employerDao, UserDao userDao,
 			VerifyCodeService verifyCodeService,
 			ConfirmEmployerService confirmEmployerService) {

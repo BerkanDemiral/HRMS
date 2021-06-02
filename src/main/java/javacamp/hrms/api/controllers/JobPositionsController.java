@@ -2,6 +2,8 @@ package javacamp.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,22 +19,23 @@ import javacamp.hrms.entities.concretes.JobPosition;
 @RestController
 @RequestMapping("/api/job_positions") // kodlama.io/api/products diye bir istekte bulunursak bu çalışacak.
 public class JobPositionsController {
-	private JobPositionService jobPositionsService;
+	private JobPositionService jobPositionService;
 
 	@Autowired // buisness-api iletişimi yapılması için
 	// autoWired sayesinde proje taranıyor ve arkada new'leniyor.
 	public JobPositionsController(JobPositionService jobPositionsService) {
 		super();
-		this.jobPositionsService = jobPositionsService;
-	}
-	@GetMapping("/getallJobPositions")
-	public DataResult<List<JobPosition>> getAll() {
-		return this.jobPositionsService.getAll();
+		this.jobPositionService = jobPositionsService;
 	}
 
-	@PostMapping("/addJobPosition") // bir şey gönderdiğimiz için -- post
-	public Result add(@RequestBody JobPosition jobPosition) {
-		return this.jobPositionsService.add(jobPosition);
+	@GetMapping("/getall")
+	public DataResult<List<JobPosition>> getAll() {
+		return this.jobPositionService.getAll();
+	}
+
+	@PostMapping("/add") // bir şey gönderdiğimiz için -- post
+	public Result add(@Valid @RequestBody JobPosition jobPosition) {
+		return this.jobPositionService.add(jobPosition);
 	}
 
 }

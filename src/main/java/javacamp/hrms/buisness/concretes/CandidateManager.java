@@ -2,6 +2,7 @@ package javacamp.hrms.buisness.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javacamp.hrms.buisness.abstracts.CandidateService;
 import javacamp.hrms.buisness.abstracts.ValidateService;
@@ -13,7 +14,8 @@ import javacamp.hrms.entities.concretes.Candidate;
 public class CandidateManager implements CandidateService {
 
 	private ValidateService<Candidate> validateService;
-
+	
+	@Autowired
 	public CandidateManager(ValidateService<Candidate> validateService) {
 		super();
 		this.validateService = validateService;

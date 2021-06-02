@@ -2,6 +2,9 @@ package javacamp.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,18 +21,19 @@ import javacamp.hrms.entities.concretes.Employer;
 public class EmployerController {
 	private EmployerService employerService;
 
+	@Autowired
 	public EmployerController(EmployerService employerService) {
 		super();
 		this.employerService = employerService;
 	}
 
-	@GetMapping("/getallEmployer")
+	@GetMapping("/getall")
 	public DataResult<List<Employer>> getAll() {
 		return this.employerService.getAll();
 	}
 
-	@PostMapping("/addEmployer") // bir şey gönderdiğimiz için -- post
-	public Result add(@RequestBody Employer employer) {
+	@PostMapping("/add") // bir şey gönderdiğimiz için -- post
+	public Result add(@Valid @RequestBody Employer employer) {
 		return this.employerService.add(employer);
 	}
 }

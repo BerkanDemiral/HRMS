@@ -6,17 +6,20 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@EqualsAndHashCode(callSuper=false)
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
-@Table(name="employers")
-@Data // miras aldığı sınıfın ortak nesnesini burada da tanımlamazsak( id gibi ) @Data kullanımı sorun çıkarmaz
+@Table(name="candidates")
+@Getter
+@Setter
 @AllArgsConstructor // parametreli constructorlar eklendi
 @NoArgsConstructor // parametresiz constructorlar eklendi
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Candidate extends User {
 	
 	
