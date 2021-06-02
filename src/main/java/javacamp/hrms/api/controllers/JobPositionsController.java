@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javacamp.hrms.buisness.abstracts.JobPositionService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
-import javacamp.hrms.entities.concretes.Employer;
 import javacamp.hrms.entities.concretes.JobPosition;
 
 @RestController
