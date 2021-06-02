@@ -22,13 +22,13 @@ import javacamp.hrms.entities.concretes.Candidate;
 @Component
 public class CandidateValidateManager implements ValidateService<Candidate> {
 
-	@Autowired
+
 	private CandidateDao candidateDao;
 	private UserDao userDao;
 	private VerifyApiService<Candidate> verifyApiService;
 	private VerifyCodeService verifyCodeService;
 	
-	
+	@Autowired
 	public CandidateValidateManager(CandidateDao candidateDao, UserDao userDao,
 			VerifyApiService<Candidate> verifyApiService, VerifyCodeService verifyCodeService) {
 		super();
@@ -40,8 +40,8 @@ public class CandidateValidateManager implements ValidateService<Candidate> {
 
 	@Override
 	public Result verifyData(Candidate candidate) {
-		if (!this.verifyApiService.apiControl(candidate)) { // doğrulama sonucu result değeri false dönerse
-			return new ErrorResult("Mernis kimlik doğrulaması başarısız oldu");
+		if (!this.verifyApiService.apiControl(candidate)) {
+			return new ErrorResult("Mernis Kimlik Doğrulaması Başarısız Oldu");
 		}
 		if (this.userDao.existsByEmail(candidate.getEmail())) {
 			return new ErrorResult("Mail adresi zaten mevcut");
@@ -54,6 +54,7 @@ public class CandidateValidateManager implements ValidateService<Candidate> {
 		}
 
 		this.candidateDao.save(candidate);
+		candidate.setVerify(true);
 		this.verifyCodeService.createVerifyCode(userDao.getOne(candidate.getId())); // getOne -- doğrulama kodu
 																					// oluşturmak için kullandık.
 		this.verifyCodeService.sendMail(candidate.getEmail());
