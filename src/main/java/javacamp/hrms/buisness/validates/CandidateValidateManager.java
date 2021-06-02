@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.adapter.service.VerifyApiService;
 import javacamp.hrms.buisness.abstracts.ValidateService;
 import javacamp.hrms.buisness.abstracts.VerifyCodeService;
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.ErrorResult;
+import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessDataResult;
 import javacamp.hrms.core.utilities.results.SuccessResult;
 import javacamp.hrms.dataAccess.abstracts.CandidateDao;
@@ -38,7 +38,7 @@ public class CandidateValidateManager implements ValidateService<Candidate>{
 	@Override
 	public Result verifyData(Candidate candidate) {
 		if(!this.verifyApiService.apiControl(candidate)) { // doğrulama sonucu result değeri false dönerse 
-			return new ErrorResult("Merni kimlik doğrulaması başarısız oldu");
+			return new ErrorResult("Mernis kimlik doğrulaması başarısız oldu");
 		}
 		if(this.userDao.existByEmail(candidate.getEmail())){
 			return new ErrorResult("Mail adresi zaten mevcut");
@@ -51,7 +51,7 @@ public class CandidateValidateManager implements ValidateService<Candidate>{
 		}
 		
 		this.candidateDao.save(candidate);
-		this.verifyCodeService.createVeriftCode(userDao.getOne(candidate.getId())); // getOne -- doğrulama kodu oluşturmak için kullandık.
+		this.verifyCodeService.createVerifyCode(userDao.getOne(candidate.getId())); // getOne -- doğrulama kodu oluşturmak için kullandık.
 		this.verifyCodeService.sendMail(candidate.getEmail());
 		return new SuccessResult("Kayıt başarılı");
 				
