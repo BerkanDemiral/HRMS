@@ -3,6 +3,7 @@ package javacamp.hrms.buisness.validates;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.adapter.service.VerifyApiService;
@@ -18,6 +19,7 @@ import javacamp.hrms.dataAccess.abstracts.UserDao;
 import javacamp.hrms.entities.concretes.Candidate;
 
 @Service
+@Component
 public class CandidateValidateManager implements ValidateService<Candidate> {
 
 	@Autowired
@@ -41,7 +43,7 @@ public class CandidateValidateManager implements ValidateService<Candidate> {
 		if (!this.verifyApiService.apiControl(candidate)) { // doğrulama sonucu result değeri false dönerse
 			return new ErrorResult("Mernis kimlik doğrulaması başarısız oldu");
 		}
-		if (this.userDao.existByEmail(candidate.getEmail())) {
+		if (this.userDao.existsByEmail(candidate.getEmail())) {
 			return new ErrorResult("Mail adresi zaten mevcut");
 		}
 		if (candidateDao.existsByIdentityNumber(candidate.getIdentityNumber())) {

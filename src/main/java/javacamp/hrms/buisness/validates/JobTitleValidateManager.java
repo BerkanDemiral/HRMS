@@ -3,6 +3,7 @@ package javacamp.hrms.buisness.validates;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.ValidateService;
@@ -14,6 +15,7 @@ import javacamp.hrms.core.utilities.results.SuccessResult;
 import javacamp.hrms.dataAccess.abstracts.JobPositionDao;
 import javacamp.hrms.entities.concretes.JobPosition;
 @Service
+@Component
 public class JobTitleValidateManager implements ValidateService<JobPosition> {
 	@Autowired
 	private JobPositionDao jobPositionDao;
@@ -26,11 +28,11 @@ public class JobTitleValidateManager implements ValidateService<JobPosition> {
 
 	@Override
 	public Result verifyData(JobPosition jobPosition) {
-		if(jobPositionDao.existByPosition(jobPosition.getJobTitle())) {
+		if(this.jobPositionDao.existsByPosition(jobPosition.getPosition())){
 			return new ErrorResult("Bu iş pozisyonu daha önce oluşturulmuş.");
 		}
 		this.jobPositionDao.save(jobPosition);
-		return new SuccessResult(jobPosition.getJobTitle().toString() + " pozisyonu başarı ile kaydedildi");
+		return new SuccessResult(jobPosition.getPosition().toString() + " pozisyonu başarı ile kaydedildi");
 	}
 
 	@Override

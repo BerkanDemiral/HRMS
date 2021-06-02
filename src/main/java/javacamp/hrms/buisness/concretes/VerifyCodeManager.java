@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.VerifyCodeService;
@@ -17,6 +18,7 @@ import javacamp.hrms.entities.concretes.User;
 import javacamp.hrms.entities.concretes.VerifyCode;
 
 @Service
+@Component
 public class VerifyCodeManager implements VerifyCodeService {
 
 	private VerifyCodeDao verifyCodeDao;

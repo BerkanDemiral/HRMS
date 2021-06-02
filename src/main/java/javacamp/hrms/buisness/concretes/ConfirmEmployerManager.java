@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.ConfirmEmployerService;
@@ -15,6 +16,7 @@ import javacamp.hrms.dataAccess.abstracts.EmployerDao;
 import javacamp.hrms.entities.concretes.ConfirmEmployer;
 import javacamp.hrms.entities.concretes.Employer;
 @Service
+@Component
 public class ConfirmEmployerManager implements ConfirmEmployerService{
 
 	private ConfirmEmployerDao confirmEmployerDao;
@@ -40,7 +42,7 @@ public class ConfirmEmployerManager implements ConfirmEmployerService{
 
 	@Override
 	public Result confirmUser(String companyName) {
-		if(!employerDao.existByCompanyName(companyName)) {
+		if(!employerDao.existsByCompanyName(companyName)) {
 			return new ErrorResult("Şirket kaydı bulunamadı.");
 		}
 		if(employerDao.getByCompanyName(companyName).isUserConfirm()) {

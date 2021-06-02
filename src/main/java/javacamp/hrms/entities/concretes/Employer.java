@@ -1,4 +1,4 @@
-package javacamp.hrms.entities.concretes;
+	package javacamp.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

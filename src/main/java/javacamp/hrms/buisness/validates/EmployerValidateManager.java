@@ -3,6 +3,7 @@ package javacamp.hrms.buisness.validates;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.buisness.abstracts.ConfirmEmployerService;
@@ -17,6 +18,7 @@ import javacamp.hrms.dataAccess.abstracts.EmployerDao;
 import javacamp.hrms.dataAccess.abstracts.UserDao;
 import javacamp.hrms.entities.concretes.Employer;
 @Service
+@Component
 public class EmployerValidateManager implements ValidateService<Employer>{
 
 	@Autowired
@@ -44,7 +46,7 @@ public class EmployerValidateManager implements ValidateService<Employer>{
 			return new ErrorResult("Şirket uzantısına sahip bir mail adresi olmadığı için : KAYIT BAŞARISIZ");
 			// info: şirketlerde -> technopat.com gibi bir web adresi varsa tüm çalışanların mail uzantısı da böyle olmalı (exchange mail)
 		}
-		if(this.userDao.existByEmail(employer.getEmail())) {
+		if(this.userDao.existsByEmail(employer.getEmail()) == true) {
 			return new ErrorResult("Mail adresi sistemde zaten mevcut");
 		}
 		if(employer.getPassword().equals(employer.getRepeatPassword()) == false) { // 2.kez girilen password ile eşleşmiyorsa

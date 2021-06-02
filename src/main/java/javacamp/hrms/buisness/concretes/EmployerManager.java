@@ -3,6 +3,7 @@ package javacamp.hrms.buisness.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.core.utilities.results.Result;
@@ -12,6 +13,7 @@ import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.entities.concretes.Employer;
 
 @Service
+@Component
 public class EmployerManager implements EmployerService {
 
 	private ValidateService<Employer> validateService;

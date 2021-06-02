@@ -17,17 +17,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JobPosition {
-	
+
 	@Id // id alanını belirttik
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment(bir bir artırılacak) diye belirttik.
 	@Column(name = "id") // hangi sütuna karşılık geliyor.
 	private int id;
 
 	@Column(name = "position")
-	private String jobTitle;
+	private String position;
 
 	@Column(name = "job_describe")
 	private String jobDescribe;
-
 
 }
