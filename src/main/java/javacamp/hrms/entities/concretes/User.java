@@ -38,7 +38,7 @@ public class User {
 	private String email; 
 	
 	@NotBlank(message = "Şifre alanını boş bırakmayınız.")
-	@Size(min=6,max =20 , message="Şifre min 6 max 20 karakterden oluşmalıdır.")
+	@Size(min=6,max =18 , message="Şifre min 6 max 18 karakterden oluşmalıdır.")
 	@Column(name = "password")
 	private String password;
 	

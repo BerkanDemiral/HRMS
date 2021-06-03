@@ -3,7 +3,6 @@ package javacamp.hrms.buisness.validates;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javacamp.hrms.adapter.service.VerifyApiService;
@@ -19,18 +18,17 @@ import javacamp.hrms.dataAccess.abstracts.UserDao;
 import javacamp.hrms.entities.concretes.Candidate;
 
 @Service
-@Component
 public class CandidateValidateManager implements ValidateService<Candidate> {
 
 
 	private CandidateDao candidateDao;
 	private UserDao userDao;
-	private VerifyApiService<Candidate> verifyApiService;
+	private VerifyApiService verifyApiService;
 	private VerifyCodeService verifyCodeService;
 	
 	@Autowired
 	public CandidateValidateManager(CandidateDao candidateDao, UserDao userDao,
-			VerifyApiService<Candidate> verifyApiService, VerifyCodeService verifyCodeService) {
+			VerifyApiService verifyApiService, VerifyCodeService verifyCodeService) {
 		super();
 		this.candidateDao = candidateDao;
 		this.userDao = userDao;
@@ -40,7 +38,7 @@ public class CandidateValidateManager implements ValidateService<Candidate> {
 
 	@Override
 	public Result verifyData(Candidate candidate) {
-		if (!this.verifyApiService.apiControl(candidate)) {
+		if (!this.verifyApiService.IfUserRealPerson(candidate)) {
 			return new ErrorResult("Mernis Kimlik Doğrulaması Başarısız Oldu");
 		}
 		if (this.userDao.existsByEmail(candidate.getEmail())) {
@@ -52,9 +50,9 @@ public class CandidateValidateManager implements ValidateService<Candidate> {
 		if (!candidate.getPassword().equals(candidate.getRepeatPassword())) {
 			return new ErrorResult("Şifreler uyuşmuyor");
 		}
-
-		this.candidateDao.save(candidate);
+		
 		candidate.setVerify(true);
+		this.candidateDao.save(candidate);
 		this.verifyCodeService.createVerifyCode(userDao.getOne(candidate.getId())); // getOne -- doğrulama kodu
 																					// oluşturmak için kullandık.
 		this.verifyCodeService.sendMail(candidate.getEmail());

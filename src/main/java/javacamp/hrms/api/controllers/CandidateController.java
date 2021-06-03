@@ -17,7 +17,7 @@ import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.entities.concretes.Candidate;
 
 @RestController
-@RequestMapping("/api/candidate")
+@RequestMapping("/api/candidates")
 public class CandidateController {
 	private CandidateService candidateService;
 
@@ -33,7 +33,7 @@ public class CandidateController {
 	}
 
 	@PostMapping("/add") // bir şey gönderdiğimiz için -- post
-	public Result add(@Valid @RequestBody Candidate candidate) {
-		return this.candidateService.add(candidate);
+	public Result add(@Valid @RequestBody Candidate newCandidate) {
+		return candidateService.add(newCandidate);
 	}
 }
