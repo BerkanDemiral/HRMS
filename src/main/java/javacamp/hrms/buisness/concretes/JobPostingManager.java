@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class JobPostingManager implements JobPostingService{
 
 	private JobPostingDao JobPostingDao;
 	
-	
+	@Autowired
 	public JobPostingManager(javacamp.hrms.dataAccess.abstracts.JobPostingDao jobPostingDao) {
 		super();
 		JobPostingDao = jobPostingDao;
@@ -91,6 +92,12 @@ public class JobPostingManager implements JobPostingService{
 		return new SuccessDataResult<List<JobPostingDto>>
 		(this.JobPostingDao.getByIsActiveAndEmployer_CompanyName(status, companyName),"Listeleme başarılı");
 	}
+
+	@Override
+	public DataResult<List<JobPosting>> getAll() {
+		return new SuccessDataResult<List<JobPosting>>(this.JobPostingDao.findAll(), "Listeleme başarılı");
+	}
+
 
 
 }

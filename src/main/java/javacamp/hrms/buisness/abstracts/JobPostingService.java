@@ -13,6 +13,7 @@ import javacamp.hrms.entities.dtos.JobPostingDto;
 public interface JobPostingService {
 	Result add(JobPosting jobPosting);
 	Result update(JobPosting jobPosting);
+	DataResult<List<JobPosting>> getAll();
 	Result closeJobPosting(JobPosting jobPosting, Employer employer);
 	
 	DataResult<List<JobPostingDto>> getByIsActive(boolean status);
