@@ -18,5 +18,4 @@ public class JobPostingDto {
 	private Date closedDate;
 	private String description;
 	
-	
 }
