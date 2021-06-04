@@ -2,6 +2,8 @@ package javacamp.hrms.buisness.abstracts;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.entities.concretes.Employer;
@@ -14,6 +16,6 @@ public interface JobPostingService {
 	Result closeJobPosting(JobPosting jobPosting, Employer employer);
 	
 	DataResult<List<JobPostingDto>> getByIsActive(boolean status);
-	DataResult<List<JobPostingDto>> getByIsActiveOrderByClosedDate(boolean status);
-	DataResult<List<JobPostingDto>> getByIsActiveAndEmployer_CompanyName(boolean status, String companyName);
+	DataResult<List<JobPosting>> getByIsActiveOrderByClosedDate(boolean status);
+	DataResult<List<JobPostingDto>> getByIsActiveAndEmployer_CompanyName(boolean status,@Param("companyName") String companyName);
 }
