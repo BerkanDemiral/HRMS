@@ -4,19 +4,27 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import javacamp.hrms.entities.concretes.JobPosting;
-import javacamp.hrms.entities.dtos.JobPostingDto;
 
-public interface JobPostingDao extends JpaRepository<JobPosting, Integer>{
-	List<JobPosting> getByIsActive(boolean status);
-	List<JobPosting> getByIsActiveOrderByClosedDate(boolean status);
+@Repository
+public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
+		
+	@Query("From JobPosting where isActive = true") // JPQL ile sql kodlaması
+	List<JobPosting> getAllIsActiveJobPostings();
+
+	@Query("From JobPosting where isActive = true Order By closedDate Asc") // iş ilanı kapanış tarihi erkenden geçe doğru sıralayacak
+	List<JobPosting> getAllIsActiveJobPostingsOrderBayClosedDateAsc();
+
 	
-	@Query("Select new kodlamaio.northwind.entities.dtos.ProductWithCategoryDto"
-			+ "(e.companyName, jp.position, jp.createDate, jp.closedDate) " + "From JobPosting jp Inner Join jp.employer e")
-	List<JobPostingDto> getByIsActiveAndEmployer_CompanyName(boolean status,@Param("companyName") String companyName);
+	//List<JobPosting> getByIsActiveOrderByClosedDate(boolean status);
+
+	@Query("From JobPosting where isActive = true and employerId =: id")
+	List<JobPosting> getAllIsActiveJobPostingsByEmployer(int id);	
+
+	JobPosting getById(int id);
 	
-	
-	
+	//List<JobPosting> getByIsActiveAndEmployer_CompanyName(boolean status, String companyName);	
+
 }

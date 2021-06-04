@@ -44,4 +44,7 @@ public class Candidate extends User {
 	@Column(name="birth_year")
 	private String birthDate;
 	
+	@Column(name = "is_verify", columnDefinition = "boolean default false")
+	private boolean isVerify = false;
+	
 }

@@ -2,21 +2,37 @@ package javacamp.hrms.buisness.abstracts;
 
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
-
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
-import javacamp.hrms.entities.concretes.Employer;
 import javacamp.hrms.entities.concretes.JobPosting;
-import javacamp.hrms.entities.dtos.JobPostingDto;
 
 public interface JobPostingService {
 	Result add(JobPosting jobPosting);
+
 	Result update(JobPosting jobPosting);
-	DataResult<List<JobPosting>> getAll();
-	Result closeJobPosting(JobPosting jobPosting, Employer employer);
+
+	Result delete(int id);
+
+	Result closeJobPosting(int jobPostingId);
 	
-	DataResult<List<JobPostingDto>> getByIsActive(boolean status);
-	DataResult<List<JobPosting>> getByIsActiveOrderByClosedDate(boolean status);
-	DataResult<List<JobPostingDto>> getByIsActiveAndEmployer_CompanyName(boolean status,@Param("companyName") String companyName);
+	
+	DataResult<JobPosting> getById(int id);
+	DataResult<List<JobPosting>> getAll();
+
+	DataResult<List<JobPosting>> getAllIsActiveJobPostings();
+
+	DataResult<List<JobPosting>> getAllIsActiveJobPostingsOrderBayClosedDateAsc();
+
+	DataResult<List<JobPosting>> getAllIsActiveJobPostingsByEmployer(int id);
+	
+	
+
+	/*
+	 * DataResult<List<JobPostingDto>> getByIsActive(boolean status); // aktif olan
+	 * ilanları listeleme DataResult<List<JobPosting>>
+	 * getByIsActiveOrderByClosedDate(boolean status); // Son başvuru tarihine göre
+	 * ilan listeleme DataResult<List<JobPostingDto>>
+	 * findByIsActiveAndEmployer_CompanyName(String companyName); // şirket ismine
+	 * göre iş ilanı listeleme
+	 */
 }

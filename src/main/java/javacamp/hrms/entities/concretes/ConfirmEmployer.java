@@ -30,7 +30,6 @@ public class ConfirmEmployer {
 	@JsonIgnore
 	private int Id;
 
-	
 	@OneToOne(targetEntity = Employer.class) // 1 employer için 1 onaylanma durumu vardır -- OnetoOne
 	@JoinColumn(name="employer_id", referencedColumnName = "user_id") // employer_id değeri user_id ile ilişkilidir
 	private Employer employer; // -- employer_id tanımlamak yerine employer tanımlayarak ilişkiyi tanımladık.
