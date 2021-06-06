@@ -65,7 +65,7 @@ public class VerifyCodeManager implements VerifyCodeService {
 		
 		User verifyUser = new User();
 		verifyUser = UserDao.getOne(newVerifyCode.getUserId().getId()); // getOne() metodu verilen id'ye ait objenin referansını döner
-		verifyUser.setVerify(true);
+		//verifyUser.setVerify(true); 
 		UserDao.save(verifyUser);
 		return new SuccessResult("Doğrulama başarılı");
 		

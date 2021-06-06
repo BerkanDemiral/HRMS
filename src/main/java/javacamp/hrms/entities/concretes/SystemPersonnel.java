@@ -5,7 +5,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor // parametresiz constructorlar eklendi
 @Table(name="system_personnels")
 @PrimaryKeyJoinColumn(name = "user_id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class SystemPersonnel extends User {
 	
 	@NotBlank(message = "İsim alanını boş bırakmayınız")
@@ -30,7 +31,4 @@ public class SystemPersonnel extends User {
 	@Column(name="last_name")
 	private String lastName;
 	
-	@JsonIgnore // belirtilen alanın json nesnesine dönüştürülmesini sağlar
-	@Column(name="is_verify")
-	private boolean verify = false; // default olarak verify ayarlanmasını belirttik
 }

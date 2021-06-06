@@ -10,8 +10,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -39,7 +37,7 @@ public class User {
 	
 	@NotBlank(message = "Şifre alanını boş bırakmayınız.")
 	@Size(min=6,max =18 , message="Şifre min 6 max 18 karakterden oluşmalıdır.")
-	@Column(name = "password")
+	@Column(name = "password", length = 2048)
 	private String password;
 	
 	@NotBlank(message = "Şifre alanı boş bırakılamaz.")
@@ -47,9 +45,10 @@ public class User {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private String repeatPassword;
 	
+	/*
 	@JsonIgnore // belirtilen alanın json nesnesine dönüştürülmesini sağlar
 	@Column(name="is_verify")
 	private boolean verify = false; // default olarak verify ayarlanmasını belirttik
-	
+	*/
 	
 }

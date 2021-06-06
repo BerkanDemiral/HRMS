@@ -23,6 +23,7 @@ public class ConfirmEmployerManager implements ConfirmEmployerService{
 	private EmployerDao employerDao;
 	
 	
+	
 	@Autowired	
 	public ConfirmEmployerManager(ConfirmEmployerDao confirmEmployerDao,
 			EmployerDao employerDao) {
@@ -35,7 +36,7 @@ public class ConfirmEmployerManager implements ConfirmEmployerService{
 	public void createConfirmEmployer(Employer employer) {
 		ConfirmEmployer confirmEmployer = new ConfirmEmployer();
 		confirmEmployer.setEmployer(employer); // @OneToOne olarak belirttiğimiz Employer employer referansına, parametre olarak yolladığımız değeri atıyoruz.
-		confirmEmployer.setSystem_personnel(1);
+		confirmEmployer.setSystem_personnel(3); // benim sistemimde 3 no'lu id'ye sahip kullanıcı admin. 
 		this.confirmEmployerDao.save(confirmEmployer);
 		
 	}
@@ -57,6 +58,7 @@ public class ConfirmEmployerManager implements ConfirmEmployerService{
 		
 		confirmEmployer = confirmEmployerDao.getByEmployerId(employer.getId());
 		confirmEmployer.setConfirmed(true);
+		
 		
 		LocalDate date = (LocalDate.now());
 		confirmEmployer.setConfirmedDate(Date.valueOf(date));

@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javacamp.hrms.entities.concretes.SystemPersonnel;
 
 public interface SystemPersonnelDao extends JpaRepository<SystemPersonnel, Integer> {
+	SystemPersonnel getById(int id);
 }

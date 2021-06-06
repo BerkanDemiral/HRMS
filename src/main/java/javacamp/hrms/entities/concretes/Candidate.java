@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name="candidates")
-@PrimaryKeyJoinColumn(name = "id")
+@PrimaryKeyJoinColumn(name = "id") // bu tablodaki hangi değer user tablosunun primary keyi ile işkili --> id;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 
 public class Candidate extends User {
@@ -44,6 +45,7 @@ public class Candidate extends User {
 	@Column(name="birth_year")
 	private String birthDate;
 	
+	@JsonIgnore
 	@Column(name = "is_verify", columnDefinition = "boolean default false")
 	private boolean isVerify = false;
 	
