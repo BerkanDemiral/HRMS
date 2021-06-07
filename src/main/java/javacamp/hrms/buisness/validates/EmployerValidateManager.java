@@ -1,5 +1,6 @@
 package javacamp.hrms.buisness.validates;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,15 +51,13 @@ public class EmployerValidateManager implements ValidateService<Employer>{
 		if(employer.getPassword().equals(employer.getRepeatPassword()) == false) { // 2.kez girilen password ile eşleşmiyorsa
 			return new ErrorResult("Şifreler uyuşmuyor");
 		}
-		/*if(employerDao) {
-			
-		}*/
-		
+
 		this.employerDao.save(employer); // eğer iflerin içine girmediyse doğrulama tamam demektir..
 		this.verifyCodeService.createVerifyCode(employer);
 		this.confirmEmployerService.createConfirmEmployer(employer);
 		this.verifyCodeService.sendMail(employer.getEmail());
 		return new SuccessResult("Kayıt başarılı");
+		
 	}
 
 	@Override

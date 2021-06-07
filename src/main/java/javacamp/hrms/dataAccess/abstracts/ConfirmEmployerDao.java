@@ -5,5 +5,6 @@ import javacamp.hrms.entities.concretes.ConfirmEmployer;
 
 public interface ConfirmEmployerDao extends JpaRepository<ConfirmEmployer, Integer> {
 	ConfirmEmployer getByEmployerId(int id); // employer id'sini alacağız bu sayede kontrol gerçekleştirebileceğiz
+	boolean getByEmployer_CompanyName(String companyName);
 	//SystemPersonnel getBySystemPersonnel(int id);
 }
