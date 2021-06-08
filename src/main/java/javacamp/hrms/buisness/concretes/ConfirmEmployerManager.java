@@ -15,18 +15,16 @@ import javacamp.hrms.dataAccess.abstracts.ConfirmEmployerDao;
 import javacamp.hrms.dataAccess.abstracts.EmployerDao;
 import javacamp.hrms.entities.concretes.ConfirmEmployer;
 import javacamp.hrms.entities.concretes.Employer;
+
 @Service
 @Component
-public class ConfirmEmployerManager implements ConfirmEmployerService{
+public class ConfirmEmployerManager implements ConfirmEmployerService {
 
 	private ConfirmEmployerDao confirmEmployerDao;
 	private EmployerDao employerDao;
-	
-	
-	
-	@Autowired	
-	public ConfirmEmployerManager(ConfirmEmployerDao confirmEmployerDao,
-			EmployerDao employerDao) {
+
+	@Autowired
+	public ConfirmEmployerManager(ConfirmEmployerDao confirmEmployerDao, EmployerDao employerDao) {
 		super();
 		this.confirmEmployerDao = confirmEmployerDao;
 		this.employerDao = employerDao;
@@ -35,39 +33,37 @@ public class ConfirmEmployerManager implements ConfirmEmployerService{
 	@Override
 	public void createConfirmEmployer(Employer employer) {
 		ConfirmEmployer confirmEmployer = new ConfirmEmployer();
-		confirmEmployer.setEmployer(employer); // @OneToOne olarak belirttiğimiz Employer employer referansına, parametre olarak yolladığımız değeri atıyoruz.
-		confirmEmployer.setSystem_personnel(3); // benim sistemimde 3 no'lu id'ye sahip kullanıcı admin. 
+		confirmEmployer.setEmployer(employer); // @OneToOne olarak belirttiğimiz Employer employer referansına,
+												// parametre olarak yolladığımız değeri atıyoruz.
+		confirmEmployer.setSystem_personnel(3); // benim sistemimde 3 no'lu id'ye sahip kullanıcı admin.
 		this.confirmEmployerDao.save(confirmEmployer);
-		
+
 	}
 
 	@Override
 	public Result confirmUser(String companyName) {
-		if(!employerDao.existsByCompanyName(companyName)) {
+		if (!employerDao.existsByCompanyName(companyName)) {
 			return new ErrorResult("Şirket kaydı bulunamadı.");
 		}
-		if(employerDao.getByCompanyName(companyName).isUserConfirm()) {
+		if (employerDao.getByCompanyName(companyName).isUserConfirm()) {
 			return new ErrorResult("Bu şirket ismi daha önce onaylanmış");
 		}
-		
+
 		Employer employer = new Employer();
 		ConfirmEmployer confirmEmployer = new ConfirmEmployer();
 		employer = employerDao.getByCompanyName(companyName);
 		employer.setUserConfirm(true);
 		employerDao.save(employer);
-		
+
 		confirmEmployer = confirmEmployerDao.getByEmployerId(employer.getId());
 		confirmEmployer.setConfirmed(true);
-		
-		
+
 		LocalDate date = (LocalDate.now());
 		confirmEmployer.setConfirmedDate(Date.valueOf(date));
 		confirmEmployerDao.save(confirmEmployer);
-		
+
 		return new SuccessResult("Doğrulama başarılı");
-		
+
 	}
-
-
 
 }

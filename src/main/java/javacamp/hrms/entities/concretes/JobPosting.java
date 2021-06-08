@@ -27,10 +27,12 @@ public class JobPosting {
 	@Column(name="id")
 	private int id;
 	
+	
 	@ManyToOne(targetEntity = JobPosition.class ,fetch = FetchType.LAZY, optional = false) // bir pozisyon birden fazla iş ilanında bulunabilir. 
 	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false) // buradaki job_position_id --> referenced --> id(job_positions table)
 	private JobPosition jobPosition;
 	
+
 	@ManyToOne(targetEntity = City.class ,fetch = FetchType.LAZY, optional = false) // bir şehir birden fazla iş ilanında bulunabilir.
 	@JoinColumn(name = "city_id", referencedColumnName =  "id" ,nullable = false)
 	private City city;

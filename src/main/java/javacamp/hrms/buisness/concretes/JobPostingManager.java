@@ -2,6 +2,8 @@ package javacamp.hrms.buisness.concretes;
 
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import javacamp.hrms.buisness.abstracts.JobPostingService;
@@ -19,6 +21,7 @@ public class JobPostingManager implements JobPostingService {
 
 	private JobPostingDao JobPostingDao;
 
+	@Autowired
 	public JobPostingManager(javacamp.hrms.dataAccess.abstracts.JobPostingDao jobPostingDao) {
 		super();
 		JobPostingDao = jobPostingDao;

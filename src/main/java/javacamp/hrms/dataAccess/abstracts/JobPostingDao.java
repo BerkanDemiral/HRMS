@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
 import javacamp.hrms.entities.concretes.JobPosting;
 
-@Repository
+
 public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
 		
 	@Query("From JobPosting where isActive = true") // JPQL ile sql kodlaması
