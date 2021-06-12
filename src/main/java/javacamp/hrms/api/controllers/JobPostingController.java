@@ -15,6 +15,7 @@ import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessResult;
 import javacamp.hrms.entities.concretes.JobPosting;
+import javacamp.hrms.entities.dtos.JobPostingDto;
 
 @RestController
 @RequestMapping("/api/jobPosting")
@@ -44,30 +45,17 @@ public class JobPostingController {
 		return new SuccessResult("Güncelleme işlemi başarılı");
 	}
 
-	@PostMapping("/closeJobPosting")
-	public Result closeJobPosting(@RequestParam int jobPostingId) {
-		return this.jobPostingService.closeJobPosting(jobPostingId);
-	}
 
 	@GetMapping("/getAllIsActiveJobPostings")
-	public DataResult<List<JobPosting>> getAllIsActiveJobPostings(){
-		return this.jobPostingService.getAllIsActiveJobPostings();
+	public DataResult<List<JobPostingDto>> getByIsActive(){
+		return this.jobPostingService.getByIsActive();
 	}
 
-	@GetMapping("/OrderBayClosedDateAsc")
-	public DataResult<List<JobPosting>> getAllIsActiveJobPostingsOrderBayClosedDateAsc(){
-		return this.jobPostingService.getAllIsActiveJobPostingsOrderBayClosedDateAsc();
-	}
 	
 	@PostMapping("/getAllIsActiveJobPostingsByEmployer")
-	public DataResult<List<JobPosting>> getAllIsActiveJobPostingsByEmployer(@RequestParam int id){
-		return this.jobPostingService.getAllIsActiveJobPostingsByEmployer(id);
+	public DataResult<List<JobPostingDto>> getByEmployer_EmployerId(@RequestParam int id){
+		return this.jobPostingService.getByEmployer_EmployerId(id);
 	}
 	
-	/*
-	 * @GetMapping("/getByEmployer") public DataResult<List<JobPostingDto>>
-	 * getByIsActiveAndEmployer_CompanyName(boolean status,String companyName){
-	 * return this.jobPostingService.getByIsActiveAndEmployer_CompanyName(status,
-	 * companyName); }
-	 */
+
 }

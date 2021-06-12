@@ -16,6 +16,5 @@ public class JobPostingDto {
 	private int openPositionNumber;
 	private Date createdDate;
 	private Date closedDate;
-	private String description;
 	
 }

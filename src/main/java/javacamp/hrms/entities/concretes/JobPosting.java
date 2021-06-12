@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,15 +26,14 @@ public class JobPosting {
 	@Column(name="id")
 	private int id;
 	
-	
-	@ManyToOne(targetEntity = JobPosition.class ,fetch = FetchType.LAZY, optional = false) // bir pozisyon birden fazla iş ilanında bulunabilir. 
-	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false) // buradaki job_position_id --> referenced --> id(job_positions table)
-	private JobPosition jobPosition;
-	
 
-	@ManyToOne(targetEntity = City.class ,fetch = FetchType.LAZY, optional = false) // bir şehir birden fazla iş ilanında bulunabilir.
+	@ManyToOne(targetEntity = City.class , optional = false) // bir şehir birden fazla iş ilanında bulunabilir.
 	@JoinColumn(name = "city_id", referencedColumnName =  "id" ,nullable = false)
 	private City city;
+	
+	@ManyToOne(targetEntity = JobPosition.class , optional = false) // bir pozisyon birden fazla iş ilanında bulunabilir. 
+	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false) // buradaki job_position_id --> referenced --> id(job_positions table)
+	private JobPosition jobPosition;
 	
 	@Column(name="min_salary")
 	private int minSalary;
@@ -55,7 +53,7 @@ public class JobPosting {
 	@Column(name="is_active")
 	private boolean isActive=false;
 	
-	@ManyToOne(targetEntity = Employer.class ,fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(targetEntity = Employer.class , optional = false)
 	@JoinColumn(name = "employer_id", referencedColumnName =  "user_id" ,nullable = false)
 	private Employer employer;
 
