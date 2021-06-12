@@ -17,7 +17,7 @@ public interface JobPostingService {
 	 Result update (JobPosting jobPosting);
 	 
 	 DataResult<List<JobPostingDto>> getByIsActive(); 
-	 DataResult<List<JobPostingDto>> getByEmployer_EmployerId(int employerId);
+	 DataResult<List<JobPostingDto>> getByEmployer_Id(int employerId);
 	
 
 	

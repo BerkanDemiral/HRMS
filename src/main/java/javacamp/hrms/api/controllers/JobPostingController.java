@@ -46,13 +46,13 @@ public class JobPostingController {
 	}
 
 
-	@GetMapping("/getAllIsActiveJobPostings")
+	@GetMapping("/getByIsActive")
 	public DataResult<List<JobPostingDto>> getByIsActive(){
 		return this.jobPostingService.getByIsActive();
 	}
 
 	
-	@PostMapping("/getAllIsActiveJobPostingsByEmployer")
+	@PostMapping("/getByEmployerEmployerId")
 	public DataResult<List<JobPostingDto>> getByEmployer_EmployerId(@RequestParam int id){
 		return this.jobPostingService.getByEmployer_EmployerId(id);
 	}

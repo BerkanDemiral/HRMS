@@ -87,7 +87,7 @@ public class JobPostingManager implements JobPostingService {
 	}
 
 	@Override
-	public DataResult<List<JobPostingDto>> getByEmployer_EmployerId(int employerId) {
+	public DataResult<List<JobPostingDto>> getByEmployer_Id(int employerId) {
 		List<JobPosting> jobs =	this.JobPostingDao.getByIsActive(true);
 		List<JobPostingDto> jobPostingDtos = new ArrayList<JobPostingDto>();
 			
