@@ -15,7 +15,6 @@ import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
 import javacamp.hrms.core.utilities.results.SuccessResult;
 import javacamp.hrms.entities.concretes.JobPosting;
-import javacamp.hrms.entities.dtos.JobPostingDto;
 
 @RestController
 @RequestMapping("/api/jobPosting")
@@ -47,14 +46,24 @@ public class JobPostingController {
 
 
 	@GetMapping("/getByIsActive")
-	public DataResult<List<JobPostingDto>> getByIsActive(){
+	public DataResult<List<JobPosting>> getByIsActive(){
 		return this.jobPostingService.getByIsActive();
 	}
 
 	
 	@PostMapping("/getByEmployerEmployerId")
-	public DataResult<List<JobPostingDto>> getByEmployer_EmployerId(@RequestParam int id){
-		return this.jobPostingService.getByEmployer_EmployerId(id);
+	public DataResult<List<JobPosting>> getByEmployer_Id(@RequestParam int id){
+		return this.jobPostingService.getByEmployer_Id(id);
+	}
+	
+	@GetMapping("/getAllSorted")
+	public DataResult<List<JobPosting>> getAllSorted(){
+		return this.jobPostingService.getAllSorted();
+	}
+	
+	@PostMapping("/changeStatus")
+	public DataResult<JobPosting> changeStatus(@RequestParam int jobPostingId, @RequestParam boolean status,@RequestParam int employerId){
+		return this.jobPostingService.changeStatus(jobPostingId, status, employerId);
 	}
 	
 

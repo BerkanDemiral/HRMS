@@ -1,6 +1,6 @@
 package javacamp.hrms.entities.dtos;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class JobPostingDto {
 	private String employerCompanyName;
 	private String jobPositionPosition;
 	private int openPositionNumber;
-	private Date createdDate;
-	private Date closedDate;
+	private LocalDate createdDate;
+	private LocalDate closedDate;
 	
 }
