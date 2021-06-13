@@ -3,6 +3,7 @@ package javacamp.hrms.entities.concretes;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,9 +22,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="job_experience")
-public class JobExperience {
-	
+@Entity
+@Table(name="lanugages")
+public class Language {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -31,20 +32,17 @@ public class JobExperience {
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne(targetEntity = Resume.class)
-	@JoinColumn(name="resume_id",referencedColumnName = "id")
+	@JoinColumn(name="resume_id", referencedColumnName = "id")
 	private Resume resume;
 	
-	@ManyToOne(targetEntity = JobPosition.class)
-	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false)
-	private JobPosition jobPosition;
+	@NotBlank(message="Dil alanını boş bırakmayınız")
+	@Column(name="language")
+	private String language;
 	
-	@NotBlank(message="Şirket İsmini Boş bırakmayınız")
-	@Column(name="company_name")
-	private String companyName;
+	@NotBlank(message="Dil seviyesi alanını boş bırakmayınız")
+	@Column(name="language_level")
+	private char langLevel;
 	
-	@Column(name="started_date")
-	private Date startedDate;
-	
-	@Column(name="ended_date")
-	private Date endedDate;
+	@Column(name="created_date")
+	private Date createdDate;
 }
