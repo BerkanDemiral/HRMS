@@ -1,4 +1,4 @@
-package javacamp.hrms.adapter.service;
+package javacamp.hrms.core.utilities.adapter.service;
 
 import javacamp.hrms.entities.concretes.Candidate;
 

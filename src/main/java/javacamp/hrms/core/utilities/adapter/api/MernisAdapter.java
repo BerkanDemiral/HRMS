@@ -1,8 +1,8 @@
-package javacamp.hrms.adapter.api;
+package javacamp.hrms.core.utilities.adapter.api;
 
 import org.springframework.stereotype.Service;
 
-import javacamp.hrms.adapter.service.VerifyApiService;
+import javacamp.hrms.core.utilities.adapter.service.VerifyApiService;
 import javacamp.hrms.entities.concretes.Candidate;
 
 

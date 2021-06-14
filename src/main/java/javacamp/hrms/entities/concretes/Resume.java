@@ -34,8 +34,9 @@ public class Resume {
 																						// olmak zorunda,
 	private Candidate candidate;
 
-	@Column(name = "photo")
-	private String photo;
+	@ManyToOne(targetEntity = Image.class)
+	@JoinColumn(name = "image_id", referencedColumnName = "id", nullable = false)
+	private Image image;
 
 	@Column(name = "github_link")
 	private String githubLink;
