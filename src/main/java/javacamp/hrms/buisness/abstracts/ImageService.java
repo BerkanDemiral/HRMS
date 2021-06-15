@@ -6,4 +6,5 @@ import javacamp.hrms.core.utilities.results.Result;
 
 public interface ImageService {
 	Result add(MultipartFile file, int resumeId);
+	Result delete(int imageId);
 }

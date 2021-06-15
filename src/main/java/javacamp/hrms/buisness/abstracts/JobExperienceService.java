@@ -4,7 +4,7 @@ import java.util.List;
 
 import javacamp.hrms.core.utilities.results.DataResult;
 import javacamp.hrms.core.utilities.results.Result;
-import javacamp.hrms.dataAccess.abstracts.JobExperience;
+import javacamp.hrms.entities.concretes.JobExperience;
 
 public interface JobExperienceService {
 	Result add(JobExperience jobExperience);
