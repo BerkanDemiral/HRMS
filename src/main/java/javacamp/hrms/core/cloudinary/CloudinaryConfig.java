@@ -1,5 +1,4 @@
 package javacamp.hrms.core.cloudinary;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,13 +11,13 @@ import javacamp.hrms.core.cloudinary.service.CloudinaryService;
 
 @Configuration
 public class CloudinaryConfig {
-	
+	/*
 	@Value("${cld.access-key}")
 	String apiKey;
 	
 	@Value("${cld.secret-key}")
 	String apiSercetKey;
-	
+	*/
 	@Bean
 	public Cloudinary cloudinaryUser() {
 		return new Cloudinary(ObjectUtils.asMap(

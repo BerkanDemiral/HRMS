@@ -1,6 +1,6 @@
 package javacamp.hrms.entities.concretes;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -39,10 +40,8 @@ public class Language {
 	@Column(name="language")
 	private String language;
 	
-	@NotBlank(message="Dil seviyesi alanını boş bırakmayınız")
 	@Column(name="language_level")
-	private char langLevel;
-	
-	@Column(name="created_date")
-	private Date createdDate;
+	@Size(min=1, max=5, message="Dil seviyesi 1 ve 5 aralığında olmalıdır.")
+	private int langLevel;
+
 }

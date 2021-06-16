@@ -1,6 +1,8 @@
 package javacamp.hrms.entities.concretes;
 
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,9 +14,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="graduate")
+@Table(name="graduates")
 public class Graduate {
 	
 	@Id
@@ -25,4 +28,6 @@ public class Graduate {
 	@Column(name="description")
 	@NotBlank(message = "Açıklama alanını boş bırakmayınız")
 	private String description;
+	
+	
 }
