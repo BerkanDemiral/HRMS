@@ -66,5 +66,10 @@ public class JobPostingController {
 		return this.jobPostingService.changeStatus(jobPostingId, status, employerId);
 	}
 	
+	@PostMapping("/getById")
+	public DataResult<JobPosting> getById(@RequestParam int id){
+		return this.jobPostingService.getById(id);
+	}
+	
 
 }

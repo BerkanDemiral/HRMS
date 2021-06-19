@@ -3,7 +3,6 @@ package javacamp.hrms.buisness.concretes;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -35,6 +34,8 @@ public class ResumeManager implements ResumeService {
 
 	@Override
 	public Result add(Resume resume) {
+		Date date = new Date();
+		resume.setCreatedDate(date);
 		this.resumeDao.save(resume);
 		return new SuccessResult("Resume ekleme işlemi başarılı");
 	}
@@ -64,11 +65,28 @@ public class ResumeManager implements ResumeService {
 	}
 
 	@Override
-	public Result update(Resume resume) {
-		Date date = new Date();
-		resume.setUpdatedDate(date);
-		this.resumeDao.save(resume);
-		return new SuccessResult("Güncelleme işlemi başarılı");
+	public Result update(int resumeId, String linkedinLink, String githubLink) {
+		Resume updatedResume = this.resumeDao.getOne(resumeId);
+		updatedResume.setGithubLink(githubLink);
+		updatedResume.setLinkedinLink(linkedinLink);
+		this.resumeDao.save(updatedResume);
+		return new SuccessResult("Github ve Linkedin Linkleri güncellendi");
+	}
+
+	@Override
+	public Result updateLinkedin(int resumeId, String linkedinLink) {
+		Resume updatedResume = this.resumeDao.getOne(resumeId);
+		updatedResume.setLinkedinLink(linkedinLink);
+		this.resumeDao.save(updatedResume);
+		return new SuccessResult("Linkedin Linki güncellendi");
+	}
+
+	@Override
+	public Result updateGithub(int resumeId, String githubLink) {
+		Resume updatedResume = this.resumeDao.getOne(resumeId);
+		updatedResume.setGithubLink(githubLink);
+		this.resumeDao.save(updatedResume);
+		return new SuccessResult("Github Linki güncellendi");
 	}
 
 }

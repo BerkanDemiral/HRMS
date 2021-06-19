@@ -13,5 +13,7 @@ public interface ResumeService {
 	Result saveImage(MultipartFile file, int resumeId);
 	DataResult<List<Resume>> getAll();
 	DataResult<List<Resume>> findAllByCandidate_Id(int id);
-	Result update(Resume resume);
+	Result update(int resumeId, String linkedinLink, String githubLink);
+	Result updateLinkedin(int resumeId, String linkedinLink);
+	Result updateGithub(int resumeId, String githubLink);
 }

@@ -12,6 +12,8 @@ public interface JobPostingService {
 	DataResult<List<JobPosting>> getAll();
 
 	DataResult<List<JobPosting>> getAllSorted();
+	
+	DataResult<JobPosting> getById(int id);
 
 	Result update(JobPosting jobPosting);
 

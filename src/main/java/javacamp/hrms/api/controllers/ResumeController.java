@@ -48,8 +48,18 @@ public class ResumeController {
 		return this.resumeService.saveImage(file, resumeId);
 	}
 	
-	@PostMapping("/update")
-	public Result update(@RequestBody Resume resume) {
-		return this.resumeService.update(resume);
+	@PostMapping("/updateAll")
+	public Result update(@RequestParam int resumeId ,@RequestParam String linkedinLink,@RequestParam String githubLink) {
+		return this.resumeService.update(resumeId, linkedinLink, githubLink);
+	}
+	
+	@PostMapping("/updateLinkedin")
+	public Result updateLinkedin(@RequestParam int resumeId ,@RequestParam String linkedinLink) {
+		return this.resumeService.updateLinkedin(resumeId, linkedinLink);
+	}
+	
+	@PostMapping("/updateGithub")
+	public Result updateGithub(@RequestParam int resumeId , @RequestParam String githubLink) {
+		return this.resumeService.updateGithub(resumeId, githubLink);
 	}
 }

@@ -93,4 +93,9 @@ public class JobPostingManager implements JobPostingService {
 		return new ErrorDataResult<>("Listeleme Başarısız");
 	}
 
+	@Override
+	public DataResult<JobPosting> getById(int id) {
+		return new SuccessDataResult<JobPosting>(JobPostingDao.getById(id), "Listeleme başarılı");
+	}
+
 }
