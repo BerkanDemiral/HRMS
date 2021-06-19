@@ -62,4 +62,8 @@ public class ResumeController {
 	public Result updateGithub(@RequestParam int resumeId , @RequestParam String githubLink) {
 		return this.resumeService.updateGithub(resumeId, githubLink);
 	}
+	@PostMapping("/findById")
+	public DataResult<Resume> findById(@RequestParam int id){
+		return this.resumeService.findById(id);
+	}
 }
