@@ -16,4 +16,5 @@ public interface ResumeService {
 	Result update(int resumeId, String linkedinLink, String githubLink);
 	Result updateLinkedin(int resumeId, String linkedinLink);
 	Result updateGithub(int resumeId, String githubLink);
+	DataResult<Resume> findById(int id);
 }

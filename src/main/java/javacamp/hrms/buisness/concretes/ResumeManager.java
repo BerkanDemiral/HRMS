@@ -89,4 +89,9 @@ public class ResumeManager implements ResumeService {
 		return new SuccessResult("Github Linki güncellendi");
 	}
 
+	@Override
+	public DataResult<Resume> findById(int id) {
+		return new SuccessDataResult<Resume>(this.resumeDao.findById(id), "Listeleme başarılı");
+	}
+
 }

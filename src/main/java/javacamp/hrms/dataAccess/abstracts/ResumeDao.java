@@ -8,4 +8,5 @@ import javacamp.hrms.entities.concretes.Resume;
 
 public interface ResumeDao extends JpaRepository<Resume, Integer>{
 	List<Resume> findAllByCandidate_Id(int id);
+	Resume findById(int id);
 }
