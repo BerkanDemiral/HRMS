@@ -56,6 +56,7 @@ public class JobPosting {
 	@Column(name="closed_date")
 	private Date closedDate;
 	
+	
 	@Column(name="is_active")
 	private boolean isActive=false;
 	
