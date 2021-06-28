@@ -1,5 +1,6 @@
 package javacamp.hrms.api.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,7 @@ import javacamp.hrms.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/confirmEmployer")
+@CrossOrigin
 public class ConfirmEmployerController {
 	private ConfirmEmployerService confirmEmployerService;
 

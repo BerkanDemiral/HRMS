@@ -47,6 +47,12 @@ public class JobPosting {
 	@Column(name="created_date")
 	private Date createdDate;
 	
+	@Column(name="work_type")
+	private String workType;
+	
+	@Column(name="work_time")
+	private String workTime;
+	
 	@Column(name="closed_date")
 	private Date closedDate;
 	

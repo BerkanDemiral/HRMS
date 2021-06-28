@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import javacamp.hrms.entities.concretes.Employer;
 
 @RestController
 @RequestMapping("/api/employer")
+@CrossOrigin
 public class EmployerController {
 	private EmployerService employerService;
 
