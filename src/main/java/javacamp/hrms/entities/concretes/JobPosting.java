@@ -31,6 +31,15 @@ public class JobPosting {
 	@JoinColumn(name = "city_id", referencedColumnName =  "id" ,nullable = false)
 	private City city;
 	
+	@ManyToOne(targetEntity = WorkingTime.class , optional = false) 
+	@JoinColumn(name = "working_time_id", referencedColumnName =  "id" ,nullable = false)
+	private WorkingTime workingTime;
+	
+	
+	@ManyToOne(targetEntity = WorkingType.class , optional = false) 
+	@JoinColumn(name = "working_type_id", referencedColumnName =  "id" ,nullable = false)
+	private WorkingType workingType;
+	
 	@ManyToOne(targetEntity = JobPosition.class , optional = false) // bir pozisyon birden fazla iş ilanında bulunabilir. 
 	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false) // buradaki job_position_id --> referenced --> id(job_positions table)
 	private JobPosition jobPosition;
@@ -46,12 +55,7 @@ public class JobPosting {
 	
 	@Column(name="created_date")
 	private Date createdDate;
-	
-	@Column(name="work_type")
-	private String workType;
-	
-	@Column(name="work_time")
-	private String workTime;
+
 	
 	@Column(name="closed_date")
 	private Date closedDate;
