@@ -11,5 +11,4 @@ public interface EducationService {
 	DataResult<List<Education>> getAll();
 	DataResult<List<Education>> sortOrderByEndedDateDesc(int resumeId);
 	
-	
 }
