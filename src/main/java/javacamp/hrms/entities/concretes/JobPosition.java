@@ -26,7 +26,5 @@ public class JobPosition {
 	@Column(name = "position")
 	private String position;
 
-	@Column(name = "job_describe")
-	private String jobDescribe;
 
 }

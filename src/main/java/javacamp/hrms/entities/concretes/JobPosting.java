@@ -50,6 +50,9 @@ public class JobPosting {
 	@Column(name="max_salary")
 	private int maxSalary;
 	
+	@Column(name="description")
+	private String description;
+	
 	@Column(name="open_position_number")
 	private int openPositionNumber;
 	
