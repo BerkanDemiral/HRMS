@@ -11,11 +11,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "job_positions") // veritabanında hangi tabloya karşılık geliyor.
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "job_positions") // veritabanında hangi tabloya karşılık geliyor.
 public class JobPosition {
 
 	@Id // id alanını belirttik
