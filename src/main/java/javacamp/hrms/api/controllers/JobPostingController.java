@@ -73,5 +73,10 @@ public class JobPostingController {
 		return this.jobPostingService.getById(id);
 	}
 	
+	@PostMapping("/getByName")
+	public DataResult<JobPosting> getByName(@RequestParam String name) {
+		return this.jobPostingService.getByName(name);
+	}
+	
 
 }

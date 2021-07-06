@@ -8,6 +8,8 @@ import javacamp.hrms.entities.concretes.JobPosting;
 
 public interface JobPostingService {
 	Result add(JobPosting jobPosting);
+	
+	DataResult<JobPosting> getByName(String name);
 
 	DataResult<List<JobPosting>> getAll();
 

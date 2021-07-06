@@ -98,4 +98,9 @@ public class JobPostingManager implements JobPostingService {
 		return new SuccessDataResult<JobPosting>(JobPostingDao.getById(id), "Listeleme başarılı");
 	}
 
+	@Override
+	public DataResult<JobPosting> getByName(String name) {
+		return new SuccessDataResult<JobPosting>(this.JobPostingDao.getByJobPosition_Position(name), "Başarılı");
+	}
+
 }
